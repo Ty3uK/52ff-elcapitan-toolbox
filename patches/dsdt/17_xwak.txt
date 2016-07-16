@@ -1,0 +1,3 @@
+into method label XWAK replace_content begin
+	Return(0)
+end

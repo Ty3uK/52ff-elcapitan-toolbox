@@ -18,7 +18,7 @@ VOODOO_DAEMON_PATH = os.path.join(BASE_PATH, 'voodooDaemon')
 PATCHMATIC = os.path.join(TOOLS_PATH, 'patchmatic')
 IASL = os.path.join(TOOLS_PATH, 'iasl')
 
-SSDT_PATH = os.path.join(os.environ['HOME'], 'Library/ssdtPRGen/ssdt.aml')
+SSDT_PATH = os.path.join(os.environ['HOME'], 'Library/ssdtPRGen/SSDT.aml')
 DSDT_PATH = os.path.join(BASE_PATH, 'patches/dsdt')
 IGPU_PATH = os.path.join(BASE_PATH, 'patches/ssdt')
 
@@ -161,13 +161,18 @@ def generate_ssdt():
     p = subprocess.Popen(
         os.path.join(TOOLS_PATH, 'ssdtPRGen.sh'),
         stdout=FNULL,
-        stdin=subprocess.PIPE
+        stdin=subprocess.PIPE,
+        stderr=subprocess.STDOUT
     )
     p.stdin.write('n')
     p.stdin.write('n')
     p.communicate()[0]
     p.stdin.close()
-    shutil.copyfile(SSDT_PATH, os.path.join(ACPI_PATH, 'SSDT.aml'))
+
+    if os.path.exists(SSDT_PATH):
+        if not os.path.exists(ACPI_PATH):
+            os.makedirs(ACPI_PATH)
+        shutil.copyfile(SSDT_PATH, os.path.join(ACPI_PATH, 'SSDT.aml'))
 
 
 @print_progress("Requesting superuser privileges", only_when_done=True)
@@ -281,6 +286,12 @@ if __name__ == "__main__":
         action="store_true"
     )
     parser.add_argument(
+        "-gs",
+        "--ssdt",
+        help="generate SSDT.aml",
+        action="store_true"
+    )
+    parser.add_argument(
         "-a",
         "--all",
         help="run all actions",
@@ -307,6 +318,7 @@ if __name__ == "__main__":
                 patch_acpi()
             if args.compile or args.all:
                 compile_patched_acpi()
+            if args.ssdt or args.all:
                 generate_ssdt()
             if args.usb or args.all:
                 compile_usb_ports_config()

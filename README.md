@@ -1,5 +1,7 @@
 ## Acer Aspire V3-371-52FF El Capitan toolbox
 
+[Guide: How to install](https://github.com/Ty3uK/52ff-elcapitan-toolbox/wiki/How-to-install)
+
 ### Abilities:
 
  - Extract needed ACPI tables (DSDT, SSDT-3)
@@ -11,11 +13,14 @@
  - Install kexts from folder
  - Install additional VoodooPS2Controller files if this kext is present in kexts folder
 
+#### Working all, except
+ - WiFi, because AR5BWB222 is not supported
+
 ### How to use
 
 ```
 ################################################################################
-usage: toolbox.py [-h] [-e] [-p] [-c] [-u] [-k] [-a]
+usage: toolbox.py [-h] [-e] [-p] [-c] [-u] [-k] [-gs] [-a]
 
 Acer Aspire V3-371-52FF El Capitan toolbox
 
@@ -26,6 +31,7 @@ optional arguments:
   -c, --compile        compile ACPI tables
   -u, --usb            compile USB ports config
   -k, --install-kexts  install kexts located at `kexts` subfolder
+  -gs, --ssdt          generate SSDT.aml
   -a, --all            run all actions
 
 Credits: ssdtPRGen.sh by PikerAlpha, ACPI patches and kexts by RehabMan.
@@ -52,8 +58,12 @@ git clone https://github.com/Ty3uK/52ff-elcapitan-toolbox.git
  - PikerAlpha: ssdtPRGen.sh script and various information in internet, thanks!
 
  ### Changelog
+ #### 16.06.2016
+ - Generating SSDT now is separated options. Run with `-gs` key.
+ - Added XWAK patch for preventing system panic after sleep
+ - Added Clover config for installation and config with correct patches and ACPI injection
 
  #### 15.07.2016
- - Initial release. Checked on El Capitan 10.11.5.
+ - Initial release. Checked on El Capitan 10.11.5
 
  &copy; Maksim Karelov aka Ty3uK, 2016
