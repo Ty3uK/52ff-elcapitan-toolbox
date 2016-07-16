@@ -15,6 +15,7 @@
 
 #### Working all, except
  - WiFi, because AR5BWB222 is not supported
+ - Card reader
 
 ### How to use
 
