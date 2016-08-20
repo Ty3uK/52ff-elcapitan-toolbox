@@ -214,12 +214,6 @@ def copy_kexts():
 @print_progress("Rebuilding kext cache")
 def rebuild_kext_cache():
     subprocess.call(
-        'sudo kextutil %s' % os.path.join(SLE_PATH, 'AppleHDA_ALC283.kext'),
-        shell=True,
-        stdout=FNULL,
-        stderr=subprocess.STDOUT
-    )
-    subprocess.call(
         'sudo touch %s && sudo kextcache -u /' % SLE_PATH,
         shell=True,
         stdout=FNULL,
