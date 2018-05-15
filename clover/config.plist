@@ -14,6 +14,12 @@
 			<dict>
 				<key>NewWay_80000000</key>
 				<true/>
+				<key>AddDTGP</key>
+				<true/>
+				<key>FixDarwin7</key>
+				<true/>
+				<key>FixLAN</key>
+				<true/>
 			</dict>
 			<key>Patches</key>
 			<array>
@@ -27,6 +33,34 @@
 					<key>Replace</key>
 					<data>WE9TSQ==</data>
 				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change EC0 to EC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					RUMwXw==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUNfXw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change H_EC to EC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					SF9FQw==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUNfXw==
+					</data>
+				</dict>
 			</array>
 			<key>ReuseFFFF</key>
 			<false/>
@@ -37,11 +71,17 @@
 				<key>Signature</key>
 				<string>DMAR</string>
 			</dict>
+			<dict>
+				<key>Length</key>
+				<integer>13529</integer>
+				<key>Signature</key>
+				<string>SSDT</string>
+			</dict>
 		</array>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
-			<true/>
+			<false/>
 			<key>Generate</key>
 			<false/>
 			<key>PluginType</key>
@@ -77,8 +117,6 @@
 	</dict>
 	<key>Boot</key>
 	<dict>
-		<key>Arguments</key>
-		<string>darkwake=8 kext-dev-mode=1</string>
 		<key>Debug</key>
 		<false/>
 		<key>Legacy</key>
@@ -104,6 +142,8 @@
 			<key>IntelGFX</key>
 			<string>0x04128086</string>
 		</dict>
+		<key>SetIntelBacklight</key>
+		<true/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>
@@ -180,10 +220,6 @@
 		<false/>
 		<key>Debug</key>
 		<false/>
-		<key>ForceKextsToLoad</key>
-		<array>
-			<string>\System\Library\Extensions\IONetworkingFamily.kext</string>
-		</array>
 		<key>KernelCpu</key>
 		<false/>
 		<key>KernelHaswellE</key>
@@ -192,57 +228,6 @@
 		<false/>
 		<key>KernelPm</key>
 		<true/>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>HDMI-audio, port 0105, 0x0a260005 0x0a260006, 0x0d220003, 0x0a2e000a, 0x0a26000a</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>AQUJAAAEAACHAAAA</data>
-				<key>Name</key>
-				<string>AppleIntelFramebufferAzul</string>
-				<key>Replace</key>
-				<data>AQUJAAAIAACHAAAA</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Enable TRIM for SSD</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>AEFQUExFIFNTRAA=</data>
-				<key>Name</key>
-				<string>IOAHCIBlockStorage</string>
-				<key>Replace</key>
-				<data>AAAAAAAAAAAAAAA=</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Boot graphics glitch, 10.10.x/10.11.x</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>AQAAdRc=</data>
-				<key>Name</key>
-				<string>IOGraphicsFamily</string>
-				<key>Replace</key>
-				<data>AQAA6xc=</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Enable 9MB cursor bytes, 0x0a260006</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>BgAmCgEDAwMAAAACAAAwAQAAYAA=</data>
-				<key>Name</key>
-				<string>AppleIntelFramebufferAzul</string>
-				<key>Replace</key>
-				<data>BgAmCgEDAwMAAAACAAAwAQAAkAA=</data>
-			</dict>
-		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
@@ -254,7 +239,7 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>Trust</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
