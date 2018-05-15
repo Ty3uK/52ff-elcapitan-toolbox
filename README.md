@@ -55,10 +55,15 @@ git clone https://github.com/Ty3uK/52ff-elcapitan-toolbox.git
 
  ### Credits
 
- - RehabMan: patches, kexts and greatest help on tonymacx86.com forum. Cheers!
+ - [@RehabMan](https://github.com/RehabMan): patches, kexts and greatest help on tonymacx86.com forum. Cheers!
  - PikerAlpha: ssdtPRGen.sh script and various information in internet, thanks!
+ - [@Slbomber](https://github.com/Slbomber): Hight Sierra support, various fixes
 
  ### Changelog
+ #### 15.05.2018
+ - Added support of High Sierra 10.13.4 by [@Slbomber](https://github.com/Slbomber) ([reference](https://github.com/Ty3uK/52ff-elcapitan-toolbox/pull/3)).
+ - Starts from now El Capitan is not supported, use old revision ([1a2492](https://github.com/Ty3uK/52ff-elcapitan-toolbox/commit/1a249274018a7f970ec6986e789d0c2633516e45)) if needed.
+ 
  #### 16.06.2016
  - Generating SSDT now is separated options. Run with `-gs` key.
  - Added XWAK patch for preventing system panic after sleep
@@ -67,4 +72,4 @@ git clone https://github.com/Ty3uK/52ff-elcapitan-toolbox.git
  #### 15.07.2016
  - Initial release. Checked on El Capitan 10.11.5
 
- &copy; Maksim Karelov aka Ty3uK, 2016
+ &copy; Maksim Karelov aka Ty3uK, 2016-2018
